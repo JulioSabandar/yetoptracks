@@ -1,10 +1,9 @@
 import React from 'react';
 
-class Navbar extends React.Component{
-    render(){
-        return (
+function Navbar (){
+    return (
         <div>
-            <nav className="navbar" role="navigation" aria-label="main navigation">
+            <nav className="navbar navey" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">    
                     <a href="https://bulma.io" className="navbar-item"> 
                     <img src="/logo.png" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox"  height="28"></img>
@@ -18,7 +17,7 @@ class Navbar extends React.Component{
                 <div id="navbarBasicExample" className="navbar-menu">
                     <div className="navbar-start">
                         <a href="https://bulma.io" className="navbar-item">
-                            Home
+                            Search
                         </a>
 
                         <a href="https://bulma.io" className="navbar-item">
@@ -29,8 +28,7 @@ class Navbar extends React.Component{
             </nav>
         </div>
 
-        )
-    }
-} 
+    )
+}
 
 export default Navbar;

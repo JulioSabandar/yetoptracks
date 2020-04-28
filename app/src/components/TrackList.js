@@ -1,40 +1,40 @@
 import React from 'react';
+function TrackList (props){
+    return (
+        <>
+            <br/>
+            <div>
+                <h1 className="title"> Reccomended Tracks </h1>
+            </div>
+            <hr/>
 
-class TrackList extends React.Component{
-    render(){
-        return (
             <>
-                <hr/>
-                <div>
-                    <h1 className="title"> Kanye West Greatest Hits </h1>
-                </div>
-                <hr/>
-                
-                <>
-                {this.props.tracks.map((track, idx) => {
-                    return (
-                        <div key={idx}>
-                        <div className="card mb-3">
-                            <div className="row no-gutters">
-                                <div className="col-md-4">
-                                    <img src={track.album.cover_medium} className="card-img" alt="..."/>
+            {props.tracks.map((track, idx) => {
+                return (
+                    <div key={idx}>
+                    <div className="card mb-3 trackcard">
+                        <div className="row no-gutters">
+                            <div className="col-md-4">
+                                <img src={track.album.cover_medium} className="card-img" alt="..."/>
+                            </div>
+                            <div className="col-md-8 oy">
+                                <div className="card-body">
+                                    <h1 className="card-title">{track.title}</h1>
+                                    <hr/>
+                                    <h4> <b> {track.artist.name}</b>  </h4>
+                                    <p className="card-text">{track.album.title}</p>
+                                    <button className="button is-danger is-small is-outlined">View</button>
                                 </div>
-                                <div className="col-md-8 oy">
-                                    <div className="card-body">
-                                        <h1 className="card-title">{track.title}</h1>
-                                        <p className="card-text">{track.album.title}</p>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
-                                                
-                        </div>
-                    )
-                })}
-                </>
+                    </div>
+                                            
+                    </div>
+                );
+            })}
             </>
-        )
-    }
-} 
-
+        </>
+    );
+}
 export default TrackList;

@@ -1,22 +1,23 @@
 import React from 'react';
 
-class SearchBar extends React.Component{
-    render(){
-        return (
-            <>
-                <input type="text"
-                    class="form-control"
-                    id="search"
-                    placeholder="Who is your favourite music artist?"
+function SearchBar (props){
+    return (
+        <>
+            <div className="searchDiv">
+                <input 
+                    type="text" 
+                    className="input is-rounded searchDivElement"
+                    type="text"
+                    placeholder="What is your favourite song or music artist?"
                     onChange={(e)=>{
-                            this.props.handleSearchInput(e)
-                        }
+                        props.handleSearchInput(e)
                     }
-                />
-                <button onClick={this.props.searchArtist} className="button is-success">Search</button>
-            </>
-        )
-    }
-} 
+                }/>
+                <button onClick={props.searchArtist} className="button is-danger searchDivElement">Search</button>
+            </div>
+        </>
+    )
+}
+
 
 export default SearchBar;

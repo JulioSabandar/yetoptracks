@@ -6,9 +6,23 @@ body{
   margin: auto
 }
 
+.navey {
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 2px 2px -2px rgba(0,0,5,.5);
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.loadingPage {
+  height: 400px;
+}
+
+.spinner-border{
+  margin: 0 auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -17,9 +31,36 @@ body{
   }
 }
 
+.trackcard{
+  transition: transform .2s;
+}
+
+.trackcard:hover {
+  resize: 103%;
+  transform: scale(1.025);
+}
+
+.body {
+  background-color: white;
+}
+.searchDiv{
+  display: flex;
+  padding: 150px;
+  height: 443px;
+  background-image: url('/background.jpg');
+}
+
+.searchDivElement{
+  margin: 2px;
+}
+
+.button {
+  size: 95%;
+}
+
 h1 {
   margin: auto;
-  font-size: 300%;
+  font-size: 150%;
 }
 
 .title {
@@ -34,7 +75,7 @@ h1 {
 .card {
   margin: 0 auto;
   height: 202px;
-  width: 800px;
+  width: 600px;
 }
 
 .App-header {
