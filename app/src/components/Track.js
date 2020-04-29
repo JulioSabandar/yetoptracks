@@ -10,7 +10,8 @@ export default (props) => {
       name: ''
     },
     album: {
-      name: ''
+      name: '',
+      cover_medium:''
     }
   })
   const [ loading, setLoading ] = useState(false)
@@ -47,7 +48,7 @@ export default (props) => {
     <>
         <div class="card bg-light player">
           <div class="card-header"><b>{track.title} by {track.artist.name}</b></div>
-          <div class="card-body">
+          <div class="card-body player-body">
             <audio controls>
               <source src={track.preview} type="audio/mpeg"/>
             </audio>

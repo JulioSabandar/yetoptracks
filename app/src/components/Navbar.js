@@ -8,7 +8,7 @@ function Navbar (){
                     <Link to="/" className="navbar-item">
                         <img src="/logo.png" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox"  height="28"></img>
                     </Link>   
-                    <a href="https://bulma.io" role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
+                    <a href="/search" role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>

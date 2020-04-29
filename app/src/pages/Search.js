@@ -1,10 +1,9 @@
 import React,  { useState } from 'react';
-import useFetch from '../hooks/useFetcher'
+import useFetch from '../hooks/useFetcher';
 import TrackList from '../components/TrackList';
 import SearchBar from '../components/SearchBar';
 import Loading from '../components/Loading';
-
-
+import * as bulmaToast from "bulma-toast";
 function Search() {
     const [doSearch, setDoSearch] = useState(true);
     const [searchInput, setSearchInput] = useState('Queen');
@@ -16,7 +15,6 @@ function Search() {
         e.preventDefault();
         setDoSearch(!doSearch);
     }
-
     return (
       <div>
         <SearchBar
@@ -25,10 +23,12 @@ function Search() {
         />
         {
           (error
-          ? (
-              <div className="errorPage">
-                <h1>You have an error</h1>
-              </div>
+          ? ( bulmaToast.toast({ 
+                message: `Error!`,
+                type: 'is-danger',
+                position: "top-center",
+                opacity: 0.8
+              })
             )
           : (loading
             ? <Loading/>

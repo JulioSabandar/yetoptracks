@@ -6,6 +6,11 @@ body{
   margin: auto
 }
 
+.homeBackground{
+  background-image: url('/home.jpg');
+  height: 85vh;
+}
+
 .navey {
   position: fixed;
   width: 100%;
@@ -13,14 +18,41 @@ body{
 }
 audio{
   width: 100%;
-  color: tomato;
+  color: #ff6347;
 }
+
+.playlistCard-left{
+  width: 200px;
+}
+
+.filler{
+  min-height: 67vh;
+}
+
+.subtitle{
+  padding-top: 5%;
+  text-align: center;
+}
+
+.player-body{
+  display: flex;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
+.button-container{
+  display: flex;
+}
+
+.card-button{
+  margin-right: 10px;
+}
+
 .player{
+  display: flex;
   position: fixed;
   height: 150px;
   width: 100%;
@@ -35,9 +67,6 @@ audio{
 }
 
 .spinner-border{
-  /* left: 50%;
-  top: 50%; */
-  /* width: 100%; */
   margin-left: 50%;
   margin-top: 11.5%;
 }

@@ -4,12 +4,27 @@ import {
     Switch,
     Route,
     Link,
-    useParams,
     useRouteMatch
   } from "react-router-dom";
 import Track from '../components/Track';
-
+import { setPlaylist } from "../store/actions/playlistActions";
+import { useDispatch, useSelector} from 'react-redux'
+import * as bulmaToast from "bulma-toast";
 function TrackList (props){
+    const dispatch = useDispatch()
+    const { playlist} = useSelector(state => state.playlistReducer);
+    const addToPlaylist = (track) => {
+        playlist.push(track);
+        console.log('aaaaaa')
+        console.log(playlist)
+        dispatch(setPlaylist(playlist));
+        bulmaToast.toast({ 
+            message: `${track.title} added to playlist`,
+            type: 'is-danger',
+            position: "top-center",
+            opacity: 0.8
+        });
+    }
     const {path} = useRouteMatch();
     return (
         <>
@@ -40,9 +55,16 @@ function TrackList (props){
                                         <hr/>
                                         <h4> <b> {track.artist.name}</b>  </h4>
                                         <p className="card-text">{track.album.title}</p>
-                                        <Link to={`${path}/${track.id}`} key={track.id}>
-                                            <button className="button is-danger is-small is-rounded is-outlined">Preview</button>
-                                        </Link>
+                                        <div className="button-container">
+                                            <Link to={`${path}/${track.id}`} key={track.id}>
+                                                <button className="button is-danger is-small is-rounded is-outlined card-button">Preview</button>
+                                            </Link>
+                                            <button 
+                                            className="button is-danger is-small is-rounded is-outlined card-button"
+                                            onClick={() => addToPlaylist(track)}>
+                                                Add to playlist
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
