@@ -11,18 +11,35 @@ body{
   width: 100%;
   box-shadow: 0 2px 2px -2px rgba(0,0,5,.5);
 }
-
+audio{
+  width: 100%;
+  color: tomato;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
+.player{
+  position: fixed;
+  height: 150px;
+  width: 100%;
+  bottom: 0px;
+  z-index:1;
+  border-radius: 0 !important;
+}
+
 .loadingPage {
   height: 400px;
+  width: 100%;
 }
 
 .spinner-border{
-  margin: 0 auto;
+  /* left: 50%;
+  top: 50%; */
+  /* width: 100%; */
+  margin-left: 50%;
+  margin-top: 11.5%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -32,6 +49,9 @@ body{
 }
 
 .trackcard{
+  margin: 0 auto;
+  height: 202px;
+  width: 600px;
   transition: transform .2s;
 }
 
@@ -54,9 +74,6 @@ body{
   margin: 2px;
 }
 
-.button {
-  size: 95%;
-}
 
 h1 {
   margin: auto;
@@ -72,11 +89,6 @@ h1 {
   width: 200px;
 }
 
-.card {
-  margin: 0 auto;
-  height: 202px;
-  width: 600px;
-}
 
 .App-header {
   background-color: #282c34;
