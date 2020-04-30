@@ -24,9 +24,13 @@ function TrackList (props){
             opacity: 0.8
         });
     }
-    const removeFromPlaylist = (track, idx) => {
+    const removeFromPlaylist = (track) => {
         let temp = playlist;
-        temp.splice(idx, 1);
+        for(let i=0; i<playlist.length; i++){
+            if(playlist[i].id == track.id){
+                temp.splice(i, 1);
+            }
+        }
         dispatch(setPlaylist(temp));
         bulmaToast.toast({ 
           message: `${track.title} removed from playlist`,
@@ -72,7 +76,7 @@ function TrackList (props){
                                             { playlist.find(x=> x.id === track.id) ?
                                                 <button 
                                                 className="button is-danger is-small is-rounded is-outlined card-button"
-                                                onClick={() => removeFromPlaylist(track, idx)}
+                                                onClick={() => removeFromPlaylist(track)}
                                                 >
                                                     Remove from playlist
                                                 </button>
