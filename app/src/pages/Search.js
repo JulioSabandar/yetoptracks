@@ -4,15 +4,14 @@ import TrackList from '../components/TrackList';
 import SearchBar from '../components/SearchBar';
 import Loading from '../components/Loading';
 import { useSelector} from "react-redux";
-// import { setLoading } from "../store/actions/tracklistActions";
 
 import * as bulmaToast from "bulma-toast";
 function Search() {
-    const loadingg = useSelector((state)=> state.tracklistReducer.loading);
+    const tracklist_loading = useSelector((state)=> state.tracklistReducer.tracklist_loading);
 
     const [doSearch, setDoSearch] = useState(true);
     const [searchInput, setSearchInput] = useState('The Beatles');
-    const { loading, tracks, error} = useFetch(searchInput, doSearch);
+    const { tracks } = useFetch(searchInput, doSearch);
     const handleSearchInput = (e) => {
         setSearchInput(e.target.value);
     }
@@ -27,15 +26,7 @@ function Search() {
           handleSearchInput={handleSearchInput}
         />
         {
-          (error
-          ? ( bulmaToast.toast({ 
-                message: `Error!`,
-                type: 'is-danger',
-                position: "top-center",
-                opacity: 0.8
-              })
-            )
-          : (loading
+          tracklist_loading
             ? <Loading/>
             : ( tracks
               ? <TrackList tracks={tracks}/>
@@ -43,8 +34,6 @@ function Search() {
                   <p className="subtitle"> No results </p> 
                 </div>)
               )
-            )
-          )
         }
         <br/>
       </div>
