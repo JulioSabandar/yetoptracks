@@ -1,5 +1,4 @@
-import { GET_TRACKLIST, GET_TRACK, SET_TRACK_LOADING, SET_TRACKLIST_LOADING} from '../actions/types'
-
+import { GET_TRACKLIST, GET_TRACK, SET_TRACK_LOADING, SET_TRACKLIST_LOADING} from '../actions/types';
 const initialState = {
   tracklist : [],
   track: {

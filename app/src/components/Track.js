@@ -1,4 +1,4 @@
-import React, {useState ,useEffect} from 'react'
+import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import {  useParams } from 'react-router-dom'
 import {
@@ -21,7 +21,7 @@ export default () => {
     dispatch(getTrack(trackId));
   }, [trackId])
 
-  if (track_loading == true) return( 
+  if (track_loading === true) return( 
     <>
       <div className="card text-white bg-dark player">
         <h1>Fetching Preview...</h1>

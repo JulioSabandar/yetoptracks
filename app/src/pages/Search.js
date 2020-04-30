@@ -5,7 +5,6 @@ import SearchBar from '../components/SearchBar';
 import Loading from '../components/Loading';
 import { useSelector} from "react-redux";
 
-import * as bulmaToast from "bulma-toast";
 function Search() {
     const tracklist_loading = useSelector((state)=> state.tracklistReducer.tracklist_loading);
 

@@ -1,18 +1,30 @@
 import React from 'react';
-import { useSelector} from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux';
+import { setPlaylist } from "../store/actions/playlistActions";
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  useParams,
   useRouteMatch
 } from "react-router-dom";
 import Track from '../components/Track';
+import * as bulmaToast from "bulma-toast";
 
 function Playlist() {
+  const dispatch = useDispatch()
   const { playlist} = useSelector(state => state.playlistReducer);
   const {path} = useRouteMatch();
+  const removeFromPlaylist = (track, idx) => {
+    let temp = playlist;
+    temp.splice(idx, 1);
+    dispatch(setPlaylist(temp));
+    bulmaToast.toast({ 
+      message: `${track.title} removed from playlist`,
+      type: 'is-danger',
+      position: "top-center",
+      opacity: 0.8
+    });
+  }
   return (
     <>
       <br/>
@@ -33,7 +45,7 @@ function Playlist() {
       </Switch>
 
       {
-        playlist.length == 0
+        playlist.length === 0
         ? <div className="filler">
             <p className="subtitle"> Theres nothing here yet. </p>
           </div>
@@ -57,6 +69,11 @@ function Playlist() {
                                         <Link to={`${path}/${track.id}`} key={track.id}>
                                             <button className="button is-danger is-small is-rounded is-outlined card-button">Preview</button>
                                         </Link>
+                                        <button 
+                                            className="button is-danger is-small is-rounded is-outlined card-button"
+                                            onClick={() => removeFromPlaylist(track, idx)}>
+                                                Remove from playlist
+                                        </button>
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
     Link,
@@ -11,7 +10,7 @@ import { setPlaylist } from "../store/actions/playlistActions";
 import { useDispatch, useSelector} from 'react-redux'
 import * as bulmaToast from "bulma-toast";
 function TrackList (props){
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const { playlist} = useSelector(state => state.playlistReducer);
     const addToPlaylist = (track) => {
         playlist.push(track);
@@ -23,6 +22,17 @@ function TrackList (props){
             type: 'is-danger',
             position: "top-center",
             opacity: 0.8
+        });
+    }
+    const removeFromPlaylist = (track, idx) => {
+        let temp = playlist;
+        temp.splice(idx, 1);
+        dispatch(setPlaylist(temp));
+        bulmaToast.toast({ 
+          message: `${track.title} removed from playlist`,
+          type: 'is-danger',
+          position: "top-center",
+          opacity: 0.8
         });
     }
     const {path} = useRouteMatch();
@@ -58,12 +68,22 @@ function TrackList (props){
                                         <div className="button-container">
                                             <Link to={`${path}/${track.id}`} key={track.id}>
                                                 <button className="button is-danger is-small is-rounded is-outlined card-button">Preview</button>
-                                            </Link>
-                                            <button 
-                                            className="button is-danger is-small is-rounded is-outlined card-button"
-                                            onClick={() => addToPlaylist(track)}>
-                                                Add to playlist
-                                            </button>
+                                            </Link> 
+                                            { playlist.find(x=> x.id === track.id) ?
+                                                <button 
+                                                className="button is-danger is-small is-rounded is-outlined card-button"
+                                                onClick={() => removeFromPlaylist(track, idx)}
+                                                >
+                                                    Remove from playlist
+                                                </button>
+                                                :
+                                                <button 
+                                                className="button is-danger is-small is-rounded is-outlined card-button"
+                                                onClick={() => addToPlaylist(track)}
+                                                >
+                                                    Add to playlist
+                                                </button>
+                                            }
                                         </div>
                                     </div>
                                 </div>
