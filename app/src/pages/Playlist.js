@@ -33,7 +33,7 @@ function Playlist() {
       <br/>
 
       <div className="playlistContainer">
-          <h1 className="title"> Your Playlist </h1>
+          <h1 className="title" data-testid="playlist-title"> Your Playlist </h1>
       </div>
       <hr/>
       <Switch>
