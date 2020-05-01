@@ -27,7 +27,7 @@ function TrackList (props){
     const removeFromPlaylist = (track) => {
         let temp = playlist;
         for(let i=0; i<playlist.length; i++){
-            if(playlist[i].id == track.id){
+            if(playlist[i].id === track.id){
                 temp.splice(i, 1);
             }
         }
