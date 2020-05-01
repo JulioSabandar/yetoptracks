@@ -25,7 +25,6 @@ test('Should Render Search Page components', ()=> {
   expect(searchbar).toBeInTheDocument();
   expect(searchbarinput).toBeInTheDocument();
   expect(searchbarbutton).toBeInTheDocument();
-
   expect(navbar).toBeInTheDocument();
 })
 
